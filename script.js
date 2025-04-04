@@ -52,6 +52,7 @@ const tabela = document.getElementById("tabela-confirmados");
 const inputNome = document.getElementById("nome");
 
 
+
 // 📌 Função para adicionar um item ao Firestore
 async function adicionarItem() {
     const nome = document.getElementById("nome").value;
@@ -89,66 +90,3 @@ async function carregarLista() {
 
 // Carrega a lista quando a página abrir
 document.addEventListener("DOMContentLoaded", carregarLista);
-
-// Função para carregar os dados do Firebase
-async function carregarDados() {
-    try {
-        const querySnapshot = await db.collection("escolhas").get();
-        const escolhidos = querySnapshot.docs.map(doc => doc.data());
-
-        // Remove os itens já escolhidos
-        const itensDisponiveis = itens.filter(item => !escolhidos.some(e => e.item === item));
-
-        // Atualiza a lista de itens disponíveis
-        lista.innerHTML = "";
-        itensDisponiveis.forEach((item) => {
-            const li = document.createElement("li");
-            li.textContent = item;
-            li.addEventListener("click", () => escolherItem(item, li));
-            lista.appendChild(li);
-        });
-
-        // Atualiza a tabela de confirmados
-        tabela.innerHTML = "";
-        escolhidos.forEach(({ nome, item }) => {
-            const linha = document.createElement("tr");
-            linha.innerHTML = `<td>${nome}</td><td>${item}</td>`;
-            tabela.appendChild(linha);
-        });
-
-    } catch (error) {
-        console.error("Erro ao carregar dados do Firestore:", error);
-        alert("Erro ao carregar os dados. Verifique sua conexão!");
-    }
-}
-
-// Função para salvar um novo nome e item escolhido
-async function escolherItem(item, li) {
-    const nome = inputNome.value.trim();
-
-    if (nome === "") {
-        alert("Por favor, digite seu nome antes de escolher um item!");
-        return;
-    }
-
-    try {
-        // Salva a escolha no Firebase
-        await db.collection("escolhas").add({ nome, item });
-
-        // Atualiza os dados na tela
-        carregarDados();
-
-        // Mensagem de confirmação
-        alert(`Muito obrigada, ${nome}, por escolher levar "${item}". Espero você lá!`);
-
-        // Limpa o campo de nome
-        inputNome.value = "";
-
-    } catch (error) {
-        console.error("Erro ao salvar no Firestore:", error);
-        alert("Houve um erro ao registrar sua escolha. Tente novamente!");
-    }
-}
-
-// Carregar os dados ao abrir a página
-carregarDados();
