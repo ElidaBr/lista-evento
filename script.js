@@ -48,8 +48,12 @@ async function carregarLista() {
         const querySnapshot = await getDocs(collection(db, "escolhas"));
         querySnapshot.forEach((doc) => {
             const dados = doc.data();
-            const linha = `<tr><td>${dados.nome}</td><td>${dados.item}</td></tr>`;
-            tabela.insertAdjacentHTML("beforeend", linha); // ✅ Mais eficiente
+            
+            // Verifica se os dados não são os que queremos excluir
+            if (dados.nome !== "Ana" && dados.item !== '"Água mineral"') {
+                const linha = `<tr><td>${dados.nome}</td><td>${dados.item}</td></tr>`;
+                tabela.innerHTML += linha;
+            }
         });
     } catch (error) {
         console.error("Erro ao carregar dados do Firestore: ", error);
