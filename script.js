@@ -1,5 +1,8 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+const db = getFirestore(); // 🔥 Obtém referência ao Firestore
+
+const querySnapshot = await getDocs(collection(db, "escolhas"));
 
 // 🔥 Configuração do Firebase
 
