@@ -32,7 +32,7 @@ async function adicionarItem() {
         alert("Item adicionado com sucesso!");
         document.getElementById("nome").value = "";
         document.getElementById("item").value = "";
-        carregarLista();
+       ;
     } catch (error) {
         console.error("Erro ao adicionar documento: ", error);
     }
