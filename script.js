@@ -1,8 +1,6 @@
-import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
-const db = getFirestore(); // 🔥 Obtém referência ao Firestore
-
-const querySnapshot = await getDocs(collection(db, "escolhas"));
 
 // 🔥 Configuração do Firebase
 
@@ -35,7 +33,7 @@ async function adicionarItem() {
         alert("Item adicionado com sucesso!");
         document.getElementById("nome").value = "";
         document.getElementById("item").value = "";
-        carregarLista(); // Atualiza a tabela automaticamente
+        carregarLista();
     } catch (error) {
         console.error("Erro ao adicionar documento: ", error);
     }
@@ -46,14 +44,20 @@ async function carregarLista() {
     const tabela = document.getElementById("tabela-confirmados");
     tabela.innerHTML = ""; // Limpa a tabela antes de adicionar os novos dados
 
-    const querySnapshot = await getDocs(collection(db, "escolhas"));
-
-    querySnapshot.forEach((doc) => {
-        const dados = doc.data();
-        const linha = `<tr><td>${dados.nome}</td><td>${dados.item}</td></tr>`;
-        tabela.innerHTML += linha;
-    });
+    try {
+        const querySnapshot = await getDocs(collection(db, "escolhas"));
+        querySnapshot.forEach((doc) => {
+            const dados = doc.data();
+            const linha = `<tr><td>${dados.nome}</td><td>${dados.item}</td></tr>`;
+            tabela.innerHTML += linha;
+        });
+    } catch (error) {
+        console.error("Erro ao carregar dados do Firestore: ", error);
+    }
 }
+
+// Adiciona evento ao botão
+document.getElementById("adicionar-btn").addEventListener("click", adicionarItem);
 
 // Carrega a lista quando a página abrir
 document.addEventListener("DOMContentLoaded", carregarLista);
