@@ -32,7 +32,7 @@ async function adicionarItem() {
         alert("Item adicionado com sucesso!");
         document.getElementById("nome").value = "";
         document.getElementById("item").value = "";
-       ;
+       
     } catch (error) {
         console.error("Erro ao adicionar documento: ", error);
     }
@@ -63,4 +63,4 @@ async function carregarLista() {
 document.getElementById("adicionar-btn").addEventListener("click", adicionarItem);
 
 // 📌 Carrega a lista quando a página abrir
-document.addEventListener("DOMContentLoaded", carregarLista
+document.addEventListener("DOMContentLoaded", carregarLista);
