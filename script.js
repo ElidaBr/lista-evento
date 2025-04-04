@@ -23,20 +23,41 @@ const itens = [
     "Refrigerante (guaraná)",
     "Refrigerante (laranja/limão)",
     "Copos e guardanapos descartáveis (1 pacote de 100 unidades cada)",
-    "Pratos e talheres descartáveis",
-    
+    "Pratos e talheres descartáveis"
 ];
 
-// Pegando a lista do HTML
+// Pegando elementos do HTML
 const lista = document.getElementById("lista-itens");
+const tabela = document.getElementById("tabela-confirmados");
+const inputNome = document.getElementById("nome");
 
-// Adicionando os itens na tela
+// Adicionando os itens na lista
 itens.forEach((item) => {
     const li = document.createElement("li");
     li.textContent = item;
+    
     li.addEventListener("click", () => {
-        li.remove(); // Remove o item quando for clicado
-        alert(`Você escolheu: ${item}`);
+        const nome = inputNome.value.trim(); // Pega o nome digitado
+
+        if (nome === "") {
+            alert("Por favor, digite seu nome antes de escolher um item!");
+            return;
+        }
+
+        // Remove o item da lista
+        li.remove();
+        
+        // Adiciona o nome e o item escolhido na tabela
+        const linha = document.createElement("tr");
+        linha.innerHTML = `<td>${nome}</td><td>${item}</td>`;
+        tabela.appendChild(linha);
+
+        // Mostra mensagem de confirmação
+        alert(`Muito obrigada, ${nome}, por escolher levar "${item}". Espero você lá!`);
+        
+        // Limpa o campo de nome
+        inputNome.value = "";
     });
+
     lista.appendChild(li);
 });
