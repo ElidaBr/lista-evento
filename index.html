@@ -3,36 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Itens para o Evento</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Lista de Itens</title>
+    <script type="module" src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        table {
+            width: 50%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #ddd;
+        }
+    </style>
 </head>
 <body>
-    <h1>Escolha um Item para Levar</h1>
+    <h2>Escolha um Item para Levar</h2>
     
     <label for="nome">Digite seu nome:</label>
     <input type="text" id="nome" placeholder="Seu nome">
     
-    <ul id="lista-itens">
-        <!-- Os itens serão inseridos aqui via JavaScript -->
-    </ul>
+    <label for="item">Escolha um item:</label>
+    <input type="text" id="item" placeholder="Item que levará">
+    
+    <button onclick="adicionarItem()">Adicionar</button>
 
-    <h2>Lista de Confirmados</h2>
+    <h3>Lista de Confirmados</h3>
     <table>
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Item Escolhido</th>
-            </tr>
-        </thead>
+        <tr>
+            <th>Nome</th>
+            <th>Item Escolhido</th>
+        </tr>
         <tbody id="tabela-confirmados">
-            <!-- Os nomes e itens serão adicionados aqui -->
         </tbody>
     </table>
 
-    <!-- Adicionando o Firebase via CDN -->
-<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js"></script>
-    <script src="script.js"></script>
-    
 </body>
 </html>
