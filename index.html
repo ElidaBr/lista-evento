@@ -23,6 +23,10 @@
         th {
             background-color: #ddd;
         }
+        select, input, button {
+            margin: 5px;
+            padding: 5px;
+        }
     </style>
 </head>
 <body>
@@ -32,8 +36,16 @@
     <input type="text" id="nome" placeholder="Seu nome">
     
     <label for="item">Escolha um item:</label>
-    <input type="text" id="item" placeholder="Item que levará">
-    
+    <select id="item">
+        <option value="">Selecione um item</option>
+        <option value="Água mineral">Água mineral</option>
+        <option value="Refrigerante">Refrigerante</option>
+        <option value="Pão de alho">Pão de alho</option>
+        <option value="Carne para churrasco">Carne para churrasco</option>
+        <option value="Salada">Salada</option>
+        <option value="Carvão">Carvão</option>
+    </select>
+
     <button onclick="adicionarItem()">Adicionar</button>
 
     <h3>Lista de Confirmados</h3>
@@ -48,3 +60,4 @@
 
 </body>
 </html>
+
