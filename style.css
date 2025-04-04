@@ -35,14 +35,14 @@ li:hover {
 }
 
 table {
-    margin: 20px auto;
+    margin: 50px auto;
     border-collapse: collapse;
     width: 80%; /* Aumentei a largura da tabela para melhor espaçamento */
 }
 
 th, td {
     border: 1px solid black;
-    padding: 15px 25px; /* Aumentei o espaçamento interno */
+    padding: 25px 35px; /* Aumentei o espaçamento interno */
     text-align: center; /* Centraliza o texto */
     font-size: 16px; /* Aumenta um pouco a fonte */
 }
@@ -53,9 +53,9 @@ th {
 
 /* Ajusta a largura das colunas para melhor espaçamento */
 td:first-child {
-    width: 50%;
+    width: 70%;
 }
 
 td:last-child {
-    width: 50%;
+    width: 70%;
 }
