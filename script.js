@@ -19,25 +19,27 @@ const db = getFirestore(app);
 console.log("Firestore inicializado:", db);
 
 // 📌 Função para adicionar um item ao Firestore
-async function adicionarItem() {
-    const nome = document.getElementById("nome").value.trim();
-    const item = document.getElementById("item").value.trim();
 
-    if (!nome || !item) {
-        alert("Por favor, preencha todos os campos.");
-        return;
-    }
+async function carregarLista() {
+    const tabela = document.getElementById("tabela-confirmados");
+    tabela.innerHTML = ""; // Limpa a tabela antes de adicionar os novos dados
 
     try {
-        await addDoc(collection(db, "escolhas"), { nome, item });
-        alert("Item adicionado com sucesso!");
-        document.getElementById("nome").value = "";
-        document.getElementById("item").value = "";
-        carregarLista();
+        const querySnapshot = await getDocs(collection(db, "escolhas"));
+        querySnapshot.forEach((doc) => {
+            const dados = doc.data();
+            
+            // Verifica se os dados são válidos
+            if (dados.nome && dados.item) {
+                const linha = `<tr><td>${dados.nome}</td><td>${dados.item}</td></tr>`;
+                tabela.innerHTML += linha;
+            }
+        });
     } catch (error) {
-        console.error("Erro ao adicionar documento: ", error);
+        console.error("Erro ao carregar dados do Firestore: ", error);
     }
 }
+
 
 // 📌 Função para carregar os dados do Firestore e exibir na tabela
 async function carregarLista() {
