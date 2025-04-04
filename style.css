@@ -37,14 +37,25 @@ li:hover {
 table {
     margin: 20px auto;
     border-collapse: collapse;
-    width: 60%;
+    width: 80%; /* Aumentei a largura da tabela para melhor espaçamento */
 }
 
 th, td {
     border: 1px solid black;
-    padding: 10px;
+    padding: 15px 25px; /* Aumentei o espaçamento interno */
+    text-align: center; /* Centraliza o texto */
+    font-size: 16px; /* Aumenta um pouco a fonte */
 }
 
 th {
     background-color: #ddd;
+}
+
+/* Ajusta a largura das colunas para melhor espaçamento */
+td:first-child {
+    width: 50%;
+}
+
+td:last-child {
+    width: 50%;
 }
