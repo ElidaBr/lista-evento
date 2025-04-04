@@ -1,5 +1,4 @@
 
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
 import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
@@ -19,8 +18,8 @@ const db = getFirestore(app);
 
 // 📌 Função para adicionar um item ao Firestore
 async function adicionarItem() {
-    const nome = document.getElementById("nome").value;
-    const item = document.getElementById("item").value;
+    const nome = document.getElementById("nome").value.trim();
+    const item = document.getElementById("item").value.trim();
 
     if (nome === "" || item === "") {
         alert("Por favor, preencha todos os campos.");
@@ -32,7 +31,7 @@ async function adicionarItem() {
         alert("Item adicionado com sucesso!");
         document.getElementById("nome").value = "";
         document.getElementById("item").value = "";
-       
+        carregarLista(); // Atualiza a tabela após adicionar o item
     } catch (error) {
         console.error("Erro ao adicionar documento: ", error);
     }
@@ -47,10 +46,13 @@ async function carregarLista() {
         const querySnapshot = await getDocs(collection(db, "escolhas"));
         querySnapshot.forEach((doc) => {
             const dados = doc.data();
-            
+
             // Exclui apenas se ambos os valores forem exatamente iguais
             if (!(dados.nome === "Ana" && dados.item === '"Água mineral"')) {
-                const linha = `<tr><td>${dados.nome}</td><td>${dados.item}</td></tr>`;
+                const linha = `<tr>
+                                <td>${dados.nome}</td>
+                                <td>${dados.item}</td>
+                              </tr>`;
                 tabela.innerHTML += linha;
             }
         });
@@ -60,6 +62,11 @@ async function carregarLista() {
 }
 
 // 📌 Adiciona evento ao botão
+document.getElementById("adicionar-btn").addEventListener("click", adicionarItem);
+
+// 📌 Carrega a lista quando a página abrir
+document.addEventListener("DOMContentLoaded", carregarLista);
+� Adiciona evento ao botão
 document.getElementById("adicionar-btn").addEventListener("click", adicionarItem);
 
 // 📌 Carrega a lista quando a página abrir
