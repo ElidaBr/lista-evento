@@ -66,7 +66,7 @@ document.getElementById("adicionar-btn").addEventListener("click", adicionarItem
 
 // 📌 Carrega a lista quando a página abrir
 document.addEventListener("DOMContentLoaded", carregarLista);
-� Adiciona evento ao botão
+// Adiciona evento ao botão
 document.getElementById("adicionar-btn").addEventListener("click", adicionarItem);
 
 // 📌 Carrega a lista quando a página abrir
