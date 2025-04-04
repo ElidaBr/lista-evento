@@ -18,12 +18,30 @@ const db = getFirestore(app);
 
 // 📌 Lista inicial de itens disponíveis
 const listaItens = [
-    "Água mineral",
-    "Refrigerante",
-    "Pão de alho",
-    "Carne para churrasco",
-    "Salada",
-    "Carvão"
+    "Salgadinhos (coxinha, risoles, quibe, etc)",
+    "Mini pastéis (carne e queijo)",
+    "Pão de queijo",
+    "Esfirras (carne/frango)",
+    "Sanduíches com patê",
+    "Salgadinhos (coxinha, risoles, quibe, etc)",
+    "Torta salgada",
+    "Cachorro-quente",
+    "Torta salgada",
+    "Sanduíches com patê",
+    "Mini pastéis (carne e queijo)",
+    "Brigadeiros",
+    "Beijinhos",
+    "Docinhos variados",
+    "Docinhos variados",
+    "Torta doce",
+    "2 garrafas 1,5l de Água mineral",
+    "1 garrafa Suco natural (laranja ou uva)",
+    "1 garrafa Suco natural (abacaxi ou maracujá)",
+    "Refrigerante (coca-cola)",
+    "Refrigerante (guaraná)",
+    "Refrigerante (laranja/limão)",
+    "Copos e guardanapos descartáveis (1 pacote de 100 unidades cada)",
+    "Pratos e talheres descartáveis"
 ];
 
 // 📌 Função para remover item do `<select>`
