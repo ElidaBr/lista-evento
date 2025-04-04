@@ -17,42 +17,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Lista de itens disponíveis
-const itens = [
-    "Salgadinhos (coxinha, risoles, quibe)",
-    "Mini pastéis (carne e queijo)",
-    "Pão de queijo",
-    "Esfirras (carne/frango)",
-    "Sanduíches naturais",
-    "Tábua de frios",
-    "Torta salgada",
-    "Cachorro-quente",
-    "Empadinhas",
-    "Pães de metro",
-    "Quiche",
-    "Brigadeiros",
-    "Beijinhos",
-    "Docinhos variados",
-    "Pavê ou mousse",
-    "Gelatina colorida",
-    "Água mineral",
-    "Suco natural (laranja ou uva)",
-    "Suco natural (abacaxi ou maracujá)",
-    "Refrigerante (coca-cola)",
-    "Refrigerante (guaraná)",
-    "Refrigerante (laranja)",
-    "Copos descartáveis",
-    "Pratos e talheres descartáveis",
-    "Guardanapos e toalhas"
-];
-
-// Pegando elementos do HTML
-const lista = document.getElementById("lista-itens");
-const tabela = document.getElementById("tabela-confirmados");
-const inputNome = document.getElementById("nome");
-
-
-
 // 📌 Função para adicionar um item ao Firestore
 async function adicionarItem() {
     const nome = document.getElementById("nome").value;
