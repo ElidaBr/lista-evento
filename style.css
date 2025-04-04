@@ -28,14 +28,14 @@ button:hover {
 }
 
 table {
-    margin: 20px auto;
+    margin: 50px auto;
     border-collapse: collapse;
     width: 80%;
 }
 
 th, td {
     border: 1px solid black;
-    padding: 15px 30px; /* Aumenta o espaço entre os textos */
+    padding: 40px 60px; /* Aumenta o espaço entre os textos */
     text-align: center;
     font-size: 16px;
 }
