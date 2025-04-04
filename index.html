@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Itens</title>
     <script type="module" src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h2>Escolha um Item para Levar</h2>
@@ -27,10 +28,12 @@
 
     <h3>Lista de Confirmados</h3>
     <table>
-        <tr>
-            <th>Nome</th>
-            <th>Item Escolhido</th>
-        </tr>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Item Escolhido</th>
+            </tr>
+        </thead>
         <tbody id="tabela-confirmados"></tbody>
     </table>
 </body>
